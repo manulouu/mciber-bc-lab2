@@ -1,0 +1,384 @@
+/* Reset general */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* === Tema global oscuro tipo Ethereum === */
+:root {
+  --bg-body: #1f232b;
+  --bg-panel: #151922;
+  --bg-panel-soft: #191f2a;
+  --bg-chip: #11141b;
+  --accent: #4f46e5;   /* índigo */
+  --accent-soft: #22c1c3; /* toque verdoso */
+  --text-main: #e5e9f0;
+  --text-muted: #8b93a7;
+  --border-subtle: rgba(255,255,255,0.06);
+  --shadow-soft: 0 20px 40px rgba(0,0,0,0.55);
+  --radius-lg: 18px;
+  --radius-md: 10px;
+  --radius-pill: 999px;
+  --transition-fast: 0.2s ease-out;
+}
+
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: radial-gradient(circle at top, #273046 0, #151822 40%, #0b0d14 100%);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 24px;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  background: linear-gradient(145deg, rgba(21,25,37,0.98), rgba(13,16,24,0.98));
+  border-radius: 24px;
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-soft);
+  padding: 28px 30px 32px;
+}
+
+/* Cabecera */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header-title h1 {
+  font-size: 1.7rem;
+  letter-spacing: 0.03em;
+}
+
+.header-title p {
+  font-size: 0.95rem;
+  color: var(--text-muted);
+}
+
+/* Badge tipo red/estado */
+.network-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(79,70,229,0.1);
+  color: #a5b4ff;
+  font-size: 0.78rem;
+}
+
+/* Estado de wallet */
+.wallet-status {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  font-size: 0.85rem;
+}
+
+.wallet-status .status-pill {
+  padding: 6px 12px;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(45,212,191,0.5);
+  background: rgba(15,118,110,0.18);
+  color: #a7f3d0;
+}
+
+.wallet-status button {
+  margin-top: 4px;
+}
+
+/* Tarjeta resumen / bloques superiores */
+.card {
+  background: radial-gradient(circle at top left, rgba(79,70,229,0.3), transparent 55%), var(--bg-panel);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  border: 1px solid var(--border-subtle);
+}
+
+.card h2 {
+  font-size: 1.1rem;
+  margin-bottom: 8px;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+
+/* Layout de columnas */
+.layout {
+  display: grid;
+  grid-template-columns: 1.3fr 1.1fr;
+  gap: 20px;
+  align-items: flex-start;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 18px;
+  padding: 4px;
+  border-radius: var(--radius-pill);
+  background: radial-gradient(circle at top, rgba(148,163,253,0.15), rgba(15,23,42,0.8));
+}
+
+.tab {
+  flex: 1;
+  text-align: center;
+  padding: 9px 10px;
+  border-radius: var(--radius-pill);
+  font-size: 0.89rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  color: var(--text-muted);
+  transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tab:hover {
+  transform: translateY(-1px);
+  border-color: rgba(148,163,253,0.6);
+}
+
+.tab.active {
+  background: linear-gradient(135deg, #4f46e5, #22c1c3);
+  color: white;
+  border-color: transparent;
+}
+
+/* Secciones de contenido */
+.content-section {
+  display: none;
+  background: var(--bg-panel-soft);
+  border-radius: var(--radius-lg);
+  padding: 20px 22px;
+  border: 1px solid var(--border-subtle);
+}
+
+.content-section.active {
+  display: block;
+}
+
+/* Formularios */
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 18px;
+  margin-bottom: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+label {
+  font-size: 0.9rem;
+  color: #e2e8f0;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+textarea,
+select {
+  padding: 9px 11px;
+  border-radius: 10px;
+  border: 1px solid rgba(148, 163, 184, 0.4);
+  background: #020617;
+  color: var(--text-main);
+  font-size: 0.9rem;
+  outline: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: #64748b;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 1px rgba(99,102,241,0.7);
+}
+
+/* Botones */
+.btn {
+  border: none;
+  border-radius: var(--radius-pill);
+  padding: 9px 18px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), opacity var(--transition-fast);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #4f46e5, #22c1c3);
+  color: white;
+  box-shadow: 0 10px 25px rgba(59,130,246,0.35);
+}
+
+.btn-secondary {
+  background: rgba(15,23,42,0.9);
+  color: #e2e8f0;
+  border: 1px solid rgba(148,163,184,0.4);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.btn:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 30px rgba(15,23,42,0.8);
+}
+
+/* Lista de licitaciones */
+#tendersContainer {
+  margin-top: 18px;
+}
+
+.tender-card {
+  background: radial-gradient(circle at top left, rgba(79,70,229,0.28), transparent 50%), var(--bg-chip);
+  border-radius: 16px;
+  padding: 16px 18px;
+  border: 1px solid var(--border-subtle);
+  margin-bottom: 12px;
+  box-shadow: 0 8px 18px rgba(0,0,0,0.45);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+}
+
+.tender-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 28px rgba(0,0,0,0.65);
+  border-color: rgba(129,140,248,0.9);
+}
+
+.tender-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.tender-header h3 {
+  font-size: 1rem;
+}
+
+.tender-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.chip {
+  padding: 3px 10px;
+  border-radius: var(--radius-pill);
+  background: rgba(15,23,42,0.9);
+  border: 1px solid rgba(148,163,184,0.4);
+}
+
+/* Mensajes de estado / alertas */
+.alert {
+  padding: 10px 12px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-top: 10px;
+}
+
+.alert-info {
+  background: rgba(59,130,246,0.15);
+  color: #bfdbfe;
+  border: 1px solid rgba(59,130,246,0.5);
+}
+
+.alert-error {
+  background: rgba(248,113,113,0.08);
+  color: #fecaca;
+  border: 1px solid rgba(248,113,113,0.5);
+}
+
+/* Estado vacío */
+.empty-state {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-muted);
+}
+
+.empty-state h3 {
+  margin-bottom: 8px;
+  color: #e2e8f0;
+}
+
+/* Sección de logs o consola */
+.console {
+  background: #020617;
+  border-radius: 12px;
+  padding: 12px 14px;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  font-size: 0.8rem;
+  border: 1px solid var(--border-subtle);
+  color: #a5b4fc;
+  max-height: 220px;
+  overflow-y: auto;
+}
+
+/* Responsivo */
+@media (max-width: 960px) {
+  .layout {
+    grid-template-columns: 1fr;
+  }
+
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .wallet-status {
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  body {
+    padding: 12px;
+  }
+
+  .container {
+    padding: 18px 16px 22px;
+  }
+
+  .tabs {
+    flex-direction: column;
+  }
+}
